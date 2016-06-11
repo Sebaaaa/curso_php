@@ -1,2 +1,8 @@
 <?php
-phpinfo ;  ?>
+$nombre = "Seba";
+echo $nombre;
+
+?>
+
+<?php
+phpinfo(); 
