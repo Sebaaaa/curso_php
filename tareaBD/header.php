@@ -6,15 +6,52 @@
     <title>Cafe |  Bienvenidos</title>
     <link rel="stylesheet" href="./css/foundation.css" />
     <script src="./js/vendor/modernizr.js"></script>
+    <script>
+      document.write('<script src=./js/vendor/' +
+      ('__proto__' in {} ? 'zepto' : 'jquery') +
+      '.js><\/script>')
+    </script>
+    <script src="./js/zepto.js"></script>
+    <script src="./js/vendor/jquery.js"></script>
+    <script src="./js/foundation.min.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
+    <script src="./js/vendor/jquery.js"></script>
+    <script src="./js/foundation/foundation.js"></script>
+    <script>
+          $(document).foundation();
+
+          var doc = document.documentElement;
+          doc.setAttribute('data-useragent', navigator.userAgent);
+        </script>
   </head>
   <body>
 <div class="row">
       <div class="large-3 columns">
         <h1><img src="./img/logo.png"/></h1>
       </div>
-      <div class="large-9 columns">
+      <div class="large-12 columns">
         <ul class="right button-group">
           <li><a href="./index.php" class="button">Inicio</a></li>
         </ul>
+        <ul class="right button-group">
+          <li><a href="./nuevo_cliente.php" class="button">Agregar Cliente</a></li>
+        </ul>
+        <ul class="right button-group">
+          <li><a href="./nuevo_empleado.php" class="button">Agregar Empleado</a></li>
+        </ul>
+
+        <ul class="right button-group">
+          <li><a href="./index.php" class="button">Inicio</a></li>
+          <?php if( !isset( $_SESSION['uRUT_EMPLEADO'] ) ){ ?>
+          <li><a href="./iniciarSesion.php" class="button">Iniciar Sesion</a></li>
+          <?php } ?>
+          <?php if( isset( $_SESSION['uRUT_EMPLEADO'] ) ){ ?>
+          <li><a href="./restricted.php" class="button">Reestringida</a></li>
+          <li><a href="./logout.php" class="button">Salir</a></li>
+          <?php } ?>
+        </ul>
+
       </div>
     </div>

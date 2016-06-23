@@ -1,8 +1,19 @@
 <?php
-include_once('utilities.php');
-include_once('db/database_utilities.php');
-$result = run_query();
-$cliente = $result -> fetch_assoc();
+$today = date('d/m/Y');
+$name = "Sebastian";
+$last_name = "Gaete";
+$name2 = "Jorge";
+$last_name2 = "Aliste";
+$url = "http://www.martiBD.com/";
+$url2 = "http://localhost/curso_php/tareaBD/tablaClientes.php";
+$url3 = "http://localhost/curso_php/tareaBD/tablaEmpleados.php";
+$url4 = "http://localhost/curso_php/tareaBD/iniciarSesion.php";
+
+
+function anio_actual(){
+  return date("Y");
+}
+
 
 ?>
 <!doctype html>
@@ -15,59 +26,80 @@ $cliente = $result -> fetch_assoc();
     <script src="./js/vendor/modernizr.js"></script>
   </head>
   <body>
-
-    <?php require_once('header.php'); ?>
-
+    <div class="row">
+      <div class="large-3 columns">
+        <h1><img src="./img/batman.jpg"/></h1>
+      </div>
+      <div class="large-9 columns">
+        <ul class="right button-group">
+          <li><a href="#" class="button">Inicio</a></li>
+          <li><a href="<?php echo $url4; ?>" class="button">Iniciar Sesion</a></li>
+          <li><a href="#" class="button">Productos</a></li>
+          <li><a href="<?php echo $url2; ?>" class="button">Clientes</a></li>
+          <li><a href="<?php echo $url3; ?>" class="button">Empleados</a></li>
+        </ul>
+      </div>
+    </div>
 
     <div class="row">
+      <div class="large-12 columns">
+        <img src="./img/cafe.jpg"/>
+        <h4>Cafetería "El Campus"</h4>
+        <p>La mejor pagina web con la mejor gestion de BD que puedas encontrar en un solo lugar!</p>
+      </div>
+    </div>
 
-      <div class="large-10 columns">
-        <h3>Tablas de la BD</h3>
-          <p>Listado</p>
-        <div class="section-container tabs" data-section>
-          <section class="section">
-            <div class="content" data-slug="panel1">
-              <div class="row">
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th width="110">Rut</th>
-                    <th width="140">Nombre</th>
-                    <th width="150">Mail</th>
-                    <th>Telefono</th>
-                    <th>Fecha Nacimiento</th>
-                    <th>Lugar Origen</th>
-                    <th>Sexo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  while($cliente = $result->fetch_assoc())
-                  {
-                  ?>
-                  <tr>
-                    <td><?php echo $cliente['RUT']; ?></td>
-                    <td><?php echo $cliente['NOMBRE']; ?></td>
-                    <td><?php echo $cliente['MAIL']; ?></td>
-                    <td><?php echo $cliente['TELEFONO']; ?></td>
-                    <td><?php echo $cliente['FECHA_NACIMIENTO']; ?></td>
-                    <td><?php echo $cliente['LUGAR_ORIGEN']; ?></td>
-                    <td><?php echo $cliente['SEXO']; ?></td>
-                    <td>
-                      
-                      <a href="./delete.php?RUT=<?php echo $cliente['RUT']; ?>" class="button tiny alert">Eliminar</a>
-                    </td>
-                  </tr>
-                  <?php
-                }
-                  ?>
-                </tbody>
-              </table>
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="panel">
+          <h4><?php echo $today; ?></h4>
+          <div class="row">
+            <div class="large-9 columns">
+              <p>Al momento de registrar empleados deberá crear su usuario y contraseña de acceso</p>
             </div>
-          </section>
+            <div class="large-3 columns">
+              <a href="<?php echo $url; ?>" class="radius button right">Alguna Acción</a>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
+    <footer class="row">
+      <div class="large-12 columns">
+        <hr/>
+        <div class="row">
+          <div class="large-6 columns">
+            <p>&copy; Copyright <?php echo $name; ?> <?php echo $last_name; ?>  <?php echo $name2; ?> <?php echo $last_name2; ?> <?php echo anio_actual(); ?> .</p>
+          </div>
+          <div class="large-6 columns">
+            <ul class="inline-list right">
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#">Artículos</a></li>
+              <li><a href="#">Contacto</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.write('<script src=./js/vendor/' +
+      ('__proto__' in {} ? 'zepto' : 'jquery') +
+      '.js><\/script>')
+    </script>
+    <script src="./js/zepto.js"></script>
+    <script src="./js/vendor/jquery.js"></script>
+    <script src="./js/foundation.min.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
+    <script src="./js/vendor/jquery.js"></script>
+    <script src="./js/foundation/foundation.js"></script>
+    <script>
+          $(document).foundation();
 
-    <?php require_once('footer.php'); ?>
+          var doc = document.documentElement;
+          doc.setAttribute('data-useragent', navigator.userAgent);
+        </script>
+  </body>
+</html>
